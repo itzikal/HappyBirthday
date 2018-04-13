@@ -3,6 +3,7 @@ package com.alkotzer.itzik.happybirthday.mainActivity;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 
 import com.alkotzer.itzik.happybirthday.R;
 
+import org.androidannotations.annotations.AfterTextChange;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
@@ -40,7 +42,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         super.onCreate(savedInstanceState);
 
         mPresenter = new MainActivityPersenter(this);
-
     }
 
     @AfterViews
@@ -55,6 +56,12 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         mBirthday.setText(birthday);
     }
 
+    @Override
+    public void setName(final String name)
+    {
+        mName.setText(name);
+    }
+
     @Click(R.id.user_birthday)
     void onBirthdayClicked()
     {
@@ -66,5 +73,11 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     public void onDateSet(final DatePicker view, final int year, final int month, final int dayOfMonth)
     {
         mPresenter.onBirthdaySelected(year, month, dayOfMonth);
+    }
+
+    @AfterTextChange(R.id.user_name)
+    void onNameChange(Editable text)
+    {
+        mPresenter.updateName(text.toString());
     }
 }

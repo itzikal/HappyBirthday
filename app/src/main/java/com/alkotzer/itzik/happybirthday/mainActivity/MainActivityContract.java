@@ -12,11 +12,15 @@ public interface MainActivityContract
         void onViewCreated();
 
         void onBirthdaySelected(int year, int month, int dayOfMonth);
+
+        void updateName(String name);
     }
 
     interface MainActivityView
     {
 
         void setBirthday(String birthday);
+
+        void setName(String name);
     }
 }

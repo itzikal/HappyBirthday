@@ -12,17 +12,20 @@ public class MainActivityPersenter implements MainActivityContract.MainActivityP
 
     private MainActivityContract.MainActivityView mView;
     private Birthday mBirthday;
+    private String mName;
 
     public MainActivityPersenter(final MainActivityContract.MainActivityView view)
     {
         mView = view;
         mBirthday = new Birthday(1980,12, 31);
+        mName = "itzik";
     }
 
     @Override
     public void onViewCreated()
     {
         setViewBirthday();
+        setViewName();
     }
 
     @Override
@@ -31,9 +34,22 @@ public class MainActivityPersenter implements MainActivityContract.MainActivityP
         mBirthday = new Birthday(year,month, dayOfMonth);
     }
 
+    @Override
+    public void updateName(final String name)
+    {
+        mName = name;
+    }
+
+    private void setViewName()
+    {
+        mView.setName(mName);
+    }
+
     private void setViewBirthday()
     {
         mView.setBirthday(mBirthday.asDate());
     }
+
+
 
 }
