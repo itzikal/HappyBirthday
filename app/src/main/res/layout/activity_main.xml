@@ -1,19 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.alkotzer.itzik.happybirthday.MainActivity">
 
     <TextView
+        android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:text="@string/app_name"/>
 
-</android.support.constraint.ConstraintLayout>
+    <EditText
+        android:id="@+id/user_name"
+        android:lines="1"
+        android:hint="@string/your_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/user_birthday"
+        android:lines="1"
+        android:inputType="none"
+        android:focusable="false"
+        android:editable="false"
+        android:hint="@string/enter_birthday"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:src="@android:drawable/ic_menu_gallery"
+        android:id="@+id/user_image"
+        android:layout_gravity="center"
+        android:layout_width="150dp"
+        android:layout_height="250dp"/>
+    <Button
+        android:text="@string/show_birthday_screen"
+        android:layout_gravity="center"
+        android:id="@+id/show_birthday_screen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</LinearLayout>
