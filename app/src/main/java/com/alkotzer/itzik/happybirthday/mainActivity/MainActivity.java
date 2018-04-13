@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.alkotzer.itzik.happybirthday.Birthday;
 import com.alkotzer.itzik.happybirthday.R;
+import com.alkotzer.itzik.happybirthday.birthdayActivity.BirthdayActivity_;
 
 import org.androidannotations.annotations.AfterTextChange;
 import org.androidannotations.annotations.AfterViews;
@@ -132,7 +133,19 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
        mPresenter.onImageClicked();
     }
 
-     @Override
+    @Click(R.id.show_birthday_screen)
+    void onButtonClicked()
+    {
+        mPresenter.onShowBirthdayScreenClicked();
+    }
+
+    @Override
+    public void navigateToBirthdayScreen()
+    {
+        startActivity(new Intent(MainActivity.this, BirthdayActivity_.class));
+    }
+
+    @Override
      public void showSelectImageSourceDialog()
     {
         new SelectImageSourceDialog().show(MainActivity.this, new SelectImageSourceDialog.OnImageSourceSelected() {

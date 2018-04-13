@@ -56,6 +56,12 @@ public class MainActivityPersenter implements MainActivityContract.MainActivityP
         return mBirthday;
     }
 
+    @Override
+    public void onShowBirthdayScreenClicked()
+    {
+        mView.navigateToBirthdayScreen();
+    }
+
     private void setShowBirthdayScreenButtonState()
     {
         mView.setShowBirthdayButtonEnabled(!TextUtils.isEmpty(mName) && mBirthday != null);

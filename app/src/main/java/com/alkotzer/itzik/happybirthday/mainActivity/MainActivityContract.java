@@ -22,6 +22,8 @@ public interface MainActivityContract
         void onImageClicked();
 
         Birthday getLastBirthday();
+
+        void onShowBirthdayScreenClicked();
     }
 
     interface MainActivityView
@@ -34,5 +36,7 @@ public interface MainActivityContract
         void setShowBirthdayButtonEnabled(boolean isEnabled);
 
         void showSelectImageSourceDialog();
+
+        void navigateToBirthdayScreen();
     }
 }
