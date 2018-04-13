@@ -6,6 +6,8 @@ import com.alkotzer.itzik.happybirthday.Birthday;
 import com.alkotzer.itzik.happybirthday.PersistenceManager;
 import com.alkotzer.itzik.happybirthday.general.AppManager;
 
+import java.util.Calendar;
+
 /**
  * Created by itzikalkotzer on 13/04/2018.
  */
@@ -43,6 +45,17 @@ public class MainActivityPersenter implements MainActivityContract.MainActivityP
         setShowBirthdayScreenButtonState();
     }
 
+    @Override
+    public Birthday getLastBirthday()
+    {
+        if(mBirthday == null)
+        {
+            Calendar instance = Calendar.getInstance();
+            return new Birthday(instance.get(Calendar.YEAR), instance.get(Calendar.MONTH),instance.get(Calendar.DAY_OF_MONTH));
+        }
+        return mBirthday;
+    }
+
     private void setShowBirthdayScreenButtonState()
     {
         mView.setShowBirthdayButtonEnabled(!TextUtils.isEmpty(mName) && mBirthday != null);
@@ -63,6 +76,12 @@ public class MainActivityPersenter implements MainActivityContract.MainActivityP
         setShowBirthdayScreenButtonState();
     }
 
+    @Override
+    public void onImageClicked()
+    {
+        mView.showSelectImageSourceDialog();
+    }
+
     private void setViewName()
     {
         mView.setName(mName);
@@ -73,4 +92,6 @@ public class MainActivityPersenter implements MainActivityContract.MainActivityP
         String date = mBirthday == null ? "" : mBirthday.asDate();
         mView.setBirthday(date);
     }
+
+
 }

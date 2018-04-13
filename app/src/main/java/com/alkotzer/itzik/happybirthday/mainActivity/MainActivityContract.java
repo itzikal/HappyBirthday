@@ -1,5 +1,7 @@
 package com.alkotzer.itzik.happybirthday.mainActivity;
 
+import com.alkotzer.itzik.happybirthday.Birthday;
+
 /**
  * Created by itzikalkotzer on 13/04/2018.
  */
@@ -16,6 +18,10 @@ public interface MainActivityContract
         void onBirthdaySelected(int year, int month, int dayOfMonth);
 
         void updateName(String name);
+
+        void onImageClicked();
+
+        Birthday getLastBirthday();
     }
 
     interface MainActivityView
@@ -26,5 +32,7 @@ public interface MainActivityContract
         void setName(String name);
 
         void setShowBirthdayButtonEnabled(boolean isEnabled);
+
+        void showSelectImageSourceDialog();
     }
 }

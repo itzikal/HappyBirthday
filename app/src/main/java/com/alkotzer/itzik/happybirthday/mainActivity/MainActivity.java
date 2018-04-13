@@ -1,23 +1,20 @@
 package com.alkotzer.itzik.happybirthday.mainActivity;
 
 import android.app.DatePickerDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.alkotzer.itzik.happybirthday.Birthday;
 import com.alkotzer.itzik.happybirthday.R;
 
 import org.androidannotations.annotations.AfterTextChange;
@@ -112,7 +109,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     @Click(R.id.user_birthday)
     void onBirthdayClicked()
     {
-        DatePickerDialog datePickerDialog = new DatePickerDialog(MainActivity.this, this, 0, 0, 0);
+        Birthday birthday = mPresenter.getLastBirthday();
+        DatePickerDialog datePickerDialog = new DatePickerDialog(MainActivity.this, this, birthday.getYear(), birthday.getMonth(), birthday.getYear());
         datePickerDialog.show();
     }
 
@@ -131,42 +129,29 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     @Click(R.id.user_image)
     void onImageClicked()
     {
-        LayoutInflater inflater = this.getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.dialog_choose_source, null);
+       mPresenter.onImageClicked();
+    }
 
-        final AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
-        alertDialog.setTitle("Choose image from");
-        alertDialog.setView(dialogView);
-        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-
-        alertDialog.show();
-        dialogView.findViewById(R.id.from_camera).setOnClickListener(new View.OnClickListener() {
+     @Override
+     public void showSelectImageSourceDialog()
+    {
+        new SelectImageSourceDialog().show(MainActivity.this, new SelectImageSourceDialog.OnImageSourceSelected() {
             @Override
-            public void onClick(final View v)
+            public void onGallerySelected()
             {
-
-                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(cameraIntent, CAMERA_REQUEST);
-                alertDialog.dismiss();
-            }
-        });
-        dialogView.findViewById(R.id.from_gallery).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v)
-            {
-
                 Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
                 photoPickerIntent.setType("image/*");
                 startActivityForResult(photoPickerIntent, RESULT_LOAD_IMG);
-                alertDialog.dismiss();
+
+            }
+
+            @Override
+            public void onCameraSelected()
+            {
+                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(cameraIntent, CAMERA_REQUEST);
             }
         });
-
     }
 
 
