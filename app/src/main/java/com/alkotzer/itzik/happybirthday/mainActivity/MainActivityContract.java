@@ -22,5 +22,7 @@ public interface MainActivityContract
         void setBirthday(String birthday);
 
         void setName(String name);
+
+        void setShowBirthdayButtonEnabled(boolean isEnabled);
     }
 }

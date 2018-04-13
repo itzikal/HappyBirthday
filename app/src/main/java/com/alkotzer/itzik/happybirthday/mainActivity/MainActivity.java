@@ -62,6 +62,12 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         mName.setText(name);
     }
 
+    @Override
+    public void setShowBirthdayButtonEnabled(final boolean isEnabled)
+    {
+        mShowBirthdayScreen.setEnabled(isEnabled);
+    }
+
     @Click(R.id.user_birthday)
     void onBirthdayClicked()
     {
