@@ -44,6 +44,13 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         mPresenter = new MainActivityPersenter(this);
     }
 
+    @Override
+    protected void onStop()
+    {
+        super.onStop();
+        mPresenter.onViewStopped();
+    }
+
     @AfterViews
     void initViews()
     {

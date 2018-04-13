@@ -3,6 +3,8 @@ package com.alkotzer.itzik.happybirthday.mainActivity;
 import android.text.TextUtils;
 
 import com.alkotzer.itzik.happybirthday.Birthday;
+import com.alkotzer.itzik.happybirthday.PersistenceManager;
+import com.alkotzer.itzik.happybirthday.general.AppManager;
 
 /**
  * Created by itzikalkotzer on 13/04/2018.
@@ -19,8 +21,18 @@ public class MainActivityPersenter implements MainActivityContract.MainActivityP
     public MainActivityPersenter(final MainActivityContract.MainActivityView view)
     {
         mView = view;
-        mBirthday = new Birthday(1980,12, 31);
-        mName = "itzik";
+
+        PersistenceManager preferance = AppManager.getInstance().getPreferance();
+        mBirthday = preferance.getBirthday();
+        mName = preferance.getName();
+    }
+
+    @Override
+    public void onViewStopped()
+    {
+        PersistenceManager preferance = AppManager.getInstance().getPreferance();
+        preferance.saveBirthday(mBirthday);
+        preferance.saveName(mName);
     }
 
     @Override
@@ -40,6 +52,7 @@ public class MainActivityPersenter implements MainActivityContract.MainActivityP
     public void onBirthdaySelected(final int year, final int month, final int dayOfMonth)
     {
         mBirthday = new Birthday(year,month, dayOfMonth);
+        setViewBirthday();
         setShowBirthdayScreenButtonState();
     }
 
@@ -57,6 +70,7 @@ public class MainActivityPersenter implements MainActivityContract.MainActivityP
 
     private void setViewBirthday()
     {
-        mView.setBirthday(mBirthday.asDate());
+        String date = mBirthday == null ? "" : mBirthday.asDate();
+        mView.setBirthday(date);
     }
 }

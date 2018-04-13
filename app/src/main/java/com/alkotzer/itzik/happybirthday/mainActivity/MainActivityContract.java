@@ -9,6 +9,8 @@ public interface MainActivityContract
     interface MainActivityPresenter
     {
 
+        void onViewStopped();
+
         void onViewCreated();
 
         void onBirthdaySelected(int year, int month, int dayOfMonth);

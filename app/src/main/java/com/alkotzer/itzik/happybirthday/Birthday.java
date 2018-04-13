@@ -17,6 +17,21 @@ public class Birthday
         mDayOfMonth = dayOfMonth;
     }
 
+    public int getYear()
+    {
+        return mYear;
+    }
+
+    public int getMonth()
+    {
+        return mMonth;
+    }
+
+    public int getDayOfMonth()
+    {
+        return mDayOfMonth;
+    }
+
     public String asDate()
     {
         return mDayOfMonth+"/"+mMonth+"/"+mYear;
