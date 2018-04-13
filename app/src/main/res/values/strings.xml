@@ -3,4 +3,7 @@
     <string name="your_name">Enter name</string>
     <string name="enter_birthday">Enter Birthday</string>
     <string name="show_birthday_screen">Show birthday screen</string>
+    <string name="from_gallery">Gallery</string>
+    <string name="from_camera">Camera</string>
+    <string name="select_photo_using">Select photo using</string>
 </resources>
