@@ -1,4 +1,4 @@
-package com.alkotzer.itzik.happybirthday;
+package com.alkotzer.itzik.happybirthday.mainActivity;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
@@ -8,12 +8,15 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.alkotzer.itzik.happybirthday.R;
+
+import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
 @EActivity(R.layout.activity_main)
-public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener
+public class MainActivity extends AppCompatActivity implements MainActivityContract.MainActivityView, DatePickerDialog.OnDateSetListener
 {
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
@@ -30,10 +33,26 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     ImageView mImage;
 
 
+    MainActivityContract.MainActivityPresenter mPresenter;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+
+        mPresenter = new MainActivityPersenter(this);
+
+    }
+
+    @AfterViews
+    void initViews()
+    {
+      mPresenter.onViewCreated();
+    }
+
+    @Override
+    public void setBirthday(final String birthday)
+    {
+        mBirthday.setText(birthday);
     }
 
     @Click(R.id.user_birthday)
@@ -46,6 +65,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     @Override
     public void onDateSet(final DatePicker view, final int year, final int month, final int dayOfMonth)
     {
-        mBirthday.setText(new Birthday(year, month, dayOfMonth).asDate());
+        mPresenter.onBirthdaySelected(year, month, dayOfMonth);
     }
 }
