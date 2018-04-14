@@ -3,6 +3,7 @@ package com.alkotzer.itzik.happybirthday.birthdayActivity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -27,9 +28,10 @@ import static com.alkotzer.itzik.happybirthday.mainActivity.MainActivity.USER_IM
 @EActivity(R.layout.activity_birthday)
 public class BirthdayActivity extends AppCompatActivity
 {
+    private static final String LOG_TAG = BirthdayActivity.class.getSimpleName();
     private static final int[] mBackgrounds = new int[]{R.drawable.android_elephant_popup, R.drawable.android_fox_popup, R.drawable.android_pelican_popup};
     private static final int[] mPlaceHolders = new int[]{R.drawable.default_place_holder_yellow, R.drawable.default_place_holder_green, R.drawable.default_place_holder_blue};
-private static final int[] mAges = new int[]{
+    private static final int[] mAges = new int[]{
         R.drawable.ic_0,
         R.drawable.ic_1,
         R.drawable.ic_2,
@@ -99,7 +101,11 @@ private static final int[] mAges = new int[]{
     private void calculateAge()
     {
         Birthday birthday = AppManager.getInstance().getPreferance().getBirthday();
-
+        if(birthday == null)
+        {
+            Log.e(LOG_TAG, "calculateAge(), Birthday was null, check if save currcly before opening this screen.");
+            throw new RuntimeException("Birthday was null, check if save currcly before opening this screen");
+        }
         Calendar today = Calendar.getInstance();
 
         int years = today.get(Calendar.YEAR) - birthday.getYear();
