@@ -20,7 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".birthdayActivity.BirthdayActivity_"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
     </application>
 

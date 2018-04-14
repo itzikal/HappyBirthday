@@ -4,16 +4,18 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.Nullable;
 
+import static com.alkotzer.itzik.happybirthday.AppConsts.BIRTHDAY_DAY;
+import static com.alkotzer.itzik.happybirthday.AppConsts.BIRTHDAY_MONTH;
+import static com.alkotzer.itzik.happybirthday.AppConsts.BIRTHDAY_YEAR;
+import static com.alkotzer.itzik.happybirthday.AppConsts.NAME;
+
 /**
  * Created by itzikalkotzer on 13/04/2018.
  */
 
 public class PersistenceManager
 {
-    private static final String NAME = "name_key";
-    private static final String BIRTHDAY_YEAR = "birthday_year_key";
-    private static final String BIRTHDAY_MONTH = "birthday_month_key";
-    private static final String BIRTHDAY_DAY = "birthday_day_key";
+
 
     private final SharedPreferences mPreferences;
 

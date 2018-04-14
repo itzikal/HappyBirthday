@@ -32,9 +32,9 @@ public class MainActivityPersenter implements MainActivityContract.MainActivityP
     @Override
     public void onViewStopped()
     {
-        PersistenceManager preferance = AppManager.getInstance().getPreferance();
-        preferance.saveBirthday(mBirthday);
-        preferance.saveName(mName);
+//        PersistenceManager preferance = AppManager.getInstance().getPreferance();
+//        preferance.saveBirthday(mBirthday);
+//        preferance.saveName(mName);
     }
 
     @Override
@@ -71,6 +71,8 @@ public class MainActivityPersenter implements MainActivityContract.MainActivityP
     public void onBirthdaySelected(final int year, final int month, final int dayOfMonth)
     {
         mBirthday = new Birthday(year,month, dayOfMonth);
+        PersistenceManager preferance = AppManager.getInstance().getPreferance();
+        preferance.saveBirthday(mBirthday);
         setViewBirthday();
         setShowBirthdayScreenButtonState();
     }
@@ -79,6 +81,8 @@ public class MainActivityPersenter implements MainActivityContract.MainActivityP
     public void updateName(final String name)
     {
         mName = name;
+        PersistenceManager preferance = AppManager.getInstance().getPreferance();
+        preferance.saveName(mName);
         setShowBirthdayScreenButtonState();
     }
 

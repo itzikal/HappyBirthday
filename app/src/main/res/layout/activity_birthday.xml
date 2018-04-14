@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,4 +7,77 @@
     android:layout_height="match_parent"
     tools:context="com.alkotzer.itzik.happybirthday.birthdayActivity.BirthdayActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <ImageView
+        android:id="@+id/user_image"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="135dp"
+        tools:background="@drawable/default_place_holder_blue"/>
+
+    <View
+        android:id="@+id/background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:background="@drawable/android_elephant_popup"
+        />
+
+
+    <Button
+        android:id="@+id/close_screen"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:background="@drawable/ic_close"/>
+
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/user_name"
+            android:textColor="@color/dark_blue"
+            android:textSize="25dp"
+            android:lines="2"
+            android:ellipsize="end"
+            android:gravity="center"
+            tools:text="Today Itzik Alkotzer is"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/left_swirls"/>
+
+        <ImageView
+            android:id="@+id/age"
+            android:padding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:src="@drawable/ic_0"/>
+
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/right_swirls"/>
+    </LinearLayout>
+        <TextView
+            android:id="@+id/year_or_month"
+            android:textColor="@color/dark_blue"
+            android:textSize="25dp"
+            android:gravity="center"
+            tools:text="Years old"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</FrameLayout>
