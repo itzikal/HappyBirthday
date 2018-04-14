@@ -14,7 +14,7 @@ import com.alkotzer.itzik.happybirthday.R;
 
 public class SelectImageSourceDialog
 {
-    interface OnImageSourceSelected
+    public interface OnImageSourceSelected
     {
         void onGallerySelected();
         void onCameraSelected();

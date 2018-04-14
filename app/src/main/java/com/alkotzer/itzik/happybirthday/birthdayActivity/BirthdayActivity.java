@@ -2,12 +2,12 @@ package com.alkotzer.itzik.happybirthday.birthdayActivity;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.alkotzer.itzik.happybirthday.BaseActivity;
 import com.alkotzer.itzik.happybirthday.Birthday;
 import com.alkotzer.itzik.happybirthday.R;
 import com.alkotzer.itzik.happybirthday.general.AppManager;
@@ -23,10 +23,8 @@ import java.io.FileNotFoundException;
 import java.util.Calendar;
 import java.util.Random;
 
-import static com.alkotzer.itzik.happybirthday.mainActivity.MainActivity.USER_IMAGE_JPEG;
-
 @EActivity(R.layout.activity_birthday)
-public class BirthdayActivity extends AppCompatActivity
+public class BirthdayActivity extends BaseActivity
 {
     private static final String LOG_TAG = BirthdayActivity.class.getSimpleName();
     private static final int[] mBackgrounds = new int[]{R.drawable.android_elephant_popup, R.drawable.android_fox_popup, R.drawable.android_pelican_popup};
@@ -138,5 +136,17 @@ public class BirthdayActivity extends AppCompatActivity
     void onCloseClicked()
     {
         finish();
+    }
+
+    @Click(R.id.user_image)
+    void onNewImageClicked()
+    {
+        super.showImageSourceDialog();
+    }
+
+    @Override
+    protected void setUserImage(final Bitmap photo)
+    {
+        mUserImage.setImageBitmap(photo);
     }
 }
