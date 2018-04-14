@@ -29,6 +29,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Date;
 
 @EActivity(R.layout.activity_main)
 public class MainActivity extends AppCompatActivity implements MainActivityContract.MainActivityView, DatePickerDialog.OnDateSetListener
@@ -111,8 +112,10 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     void onBirthdayClicked()
     {
         Birthday birthday = mPresenter.getLastBirthday();
-        DatePickerDialog datePickerDialog = new DatePickerDialog(MainActivity.this, this, birthday.getYear(), birthday.getMonth(), birthday.getYear());
+        DatePickerDialog datePickerDialog = new DatePickerDialog(MainActivity.this, this, birthday.getYear(), birthday.getMonth(), birthday.getDayOfMonth());
+        datePickerDialog.getDatePicker().setMaxDate(new Date().getTime());
         datePickerDialog.show();
+
     }
 
     @Override
