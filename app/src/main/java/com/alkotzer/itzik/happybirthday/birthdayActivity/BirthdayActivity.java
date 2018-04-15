@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,8 +28,9 @@ import java.util.Random;
 public class BirthdayActivity extends BaseActivity
 {
     private static final String LOG_TAG = BirthdayActivity.class.getSimpleName();
-    private static final int[] mBackgrounds = new int[]{R.drawable.android_elephant_popup, R.drawable.android_fox_popup, R.drawable.android_pelican_popup};
+    private static final int[] mBackgrounds = new int[]{R.drawable.background1, R.drawable.background2, R.drawable.background3};
     private static final int[] mPlaceHolders = new int[]{R.drawable.default_place_holder_yellow, R.drawable.default_place_holder_green, R.drawable.default_place_holder_blue};
+    private static final int[] mCamraIcon = new int[]{R.drawable.camera_icon_yellow, R.drawable.camera_icon_green, R.drawable.camera_icon_blue};
     private static final int[] mAges = new int[]{
         R.drawable.ic_0,
         R.drawable.ic_1,
@@ -59,14 +61,17 @@ public class BirthdayActivity extends BaseActivity
     @ViewById(R.id.age)
     ImageView mAge;
 
+    @ViewById(R.id.replace_photo)
+    Button mReplacePhoto;
 
     @AfterViews
     void initViews()
     {
         Random r = new Random(System.currentTimeMillis());
-        int random = r.nextInt(2);
-
+        int random = r.nextInt(3);
+        Log.d(LOG_TAG, "initViews(), selected theme: " +random);
         mBackground.setBackgroundResource(mBackgrounds[random]);
+        mReplacePhoto.setBackgroundResource(mCamraIcon[random]);
 
         String filename = getCacheDir().toString() + USER_IMAGE_JPEG;
         if(new File(filename).exists())
@@ -138,7 +143,7 @@ public class BirthdayActivity extends BaseActivity
         finish();
     }
 
-    @Click(R.id.user_image)
+    @Click(R.id.replace_photo)
     void onNewImageClicked()
     {
         super.showImageSourceDialog();

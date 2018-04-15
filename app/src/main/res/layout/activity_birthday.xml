@@ -9,10 +9,10 @@
 
     <ImageView
         android:id="@+id/user_image"
-        android:layout_width="400dp"
-        android:layout_height="400dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="135dp"
+        android:layout_marginTop="@dimen/user_image_margin_top"
         tools:background="@drawable/default_place_holder_blue"/>
 
     <View
@@ -22,6 +22,13 @@
         tools:background="@drawable/android_elephant_popup"
         />
 
+    <Button
+        android:id="@+id/replace_photo"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="@dimen/camera_left"
+        android:layout_marginTop="@dimen/camera_top"
+        android:background="@drawable/camera_icon_blue"/>
 
     <Button
         android:id="@+id/close_screen"
@@ -30,54 +37,56 @@
         android:background="@drawable/ic_close"/>
 
     <LinearLayout
-        android:layout_marginTop="30dp"
-        android:layout_gravity="center_horizontal"
-        android:orientation="vertical"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/user_name"
-            android:textColor="@color/dark_blue"
-            android:textSize="25dp"
-            android:lines="2"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
             android:ellipsize="end"
             android:gravity="center"
-            tools:text="Today Itzik Alkotzer is"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"/>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/left_swirls"/>
-
-        <ImageView
-            android:id="@+id/age"
-            android:padding="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:src="@drawable/ic_0"/>
-
-        <ImageView
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/right_swirls"/>
-    </LinearLayout>
-        <TextView
-            android:id="@+id/year_or_month"
+            android:lines="2"
             android:textColor="@color/dark_blue"
             android:textSize="25dp"
-            android:gravity="center"
-            tools:text="Years old"
+            tools:text="Today Itzik Alkotzer is"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/left_swirls"/>
+
+            <ImageView
+                android:id="@+id/age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                tools:src="@drawable/ic_0"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/right_swirls"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/year_or_month"
             android:layout_width="180dp"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/dark_blue"
+            android:textSize="25dp"
+            tools:text="Years old"/>
     </LinearLayout>
 </FrameLayout>
